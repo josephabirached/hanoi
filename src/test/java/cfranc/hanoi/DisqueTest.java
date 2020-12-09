@@ -5,25 +5,36 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class DisqueTest {
+	int tallD = 3;
+	int smallD = 1;
+	Disque dSmall = new Disque(smallD);
+	Disque dTall = new Disque(tallD);
 	
-	Disque dSmall = new Disque(1);
-	Disque dMedium = new Disque(2);
-	Disque dTall = new Disque(3);
-
 	@Test
-	public void testCompareTo() {
-		Disque petit = new Disque(1);
-		Disque moyen = new Disque(2);
-		Disque grand = new Disque(3);
-		assertEquals(-1, petit.compareTo(moyen));
-		assertEquals(-1, moyen.compareTo(grand));
-		//TODO : à compléter
-	}
-
-	@Test
-	public void compareTo_SmallMedium_Negative(){
+	public void testCompareTo_PetitComapreToGrand_negative1() {
 		int expected = -1;
-		int actual = dSmall.compareTo(dMedium);
+		int actual = dSmall.compareTo(dTall);
+		
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testCompareTo_GrandComapreToPetit_positive1() {
+		int expected = 1;
+		int actual = dTall.compareTo(dSmall);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testCompareTo_DiametreEgaux_0() {
+		Disque dTall2 = new Disque(tallD);
+		int expected = 0;
+		int actual = dTall.compareTo(dTall2);
+		
+		assertEquals(expected, actual);
+	}
+	
+	
+
 }
